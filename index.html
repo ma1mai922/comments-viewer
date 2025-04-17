@@ -2,22 +2,51 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>直接文字表示テスト</title>
+  <title>ニコニコ風コメントテスト</title>
   <style>
     html, body {
       margin: 0;
       padding: 0;
       background: black;
-      color: white;
-      font-size: 40px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      overflow: hidden;
+    }
+    #comment-canvas {
+      width: 100vw;
       height: 100vh;
+      position: relative;
+      background: black;
     }
   </style>
 </head>
 <body>
-  ★ これは直接表示されたテスト文字です ★
+  <div id="comment-canvas"></div>
+
+  <!-- ★ 重要：正しいバージョンの CommentCoreLibrary を読み込み -->
+  <script src="https://unpkg.com/comment-core-library@latest/build/CommentCoreLibrary.min.js"></script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const commentCanvas = document.getElementById("comment-canvas");
+      const cm = new CommentManager(commentCanvas);
+      cm.init(); // ← 描画レイヤー初期化
+      cm.start(); // ← スタート！
+
+      // 白い固定コメント（画面上部）
+      cm.send({
+        mode: "top",
+        text: "★ 表示されました！ 🎉",
+        size: 50,
+        color: "#ffffff"
+      });
+
+      // 水色スクロールコメント（横に流れる）
+      cm.send({
+        mode: "scroll",
+        text: "ようこそ！コメント表示は正常に動いています 🙌",
+        size: 45,
+        color: "#00ffff"
+      });
+    });
+  </script>
 </body>
 </html>
