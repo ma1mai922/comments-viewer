@@ -21,10 +21,9 @@
 <body>
   <div id="comment-canvas"></div>
 
-  <!-- ✅ バージョン指定で確実に読み込む -->
+  <!-- ✅ 正しいライブラリURL -->
   <script src="https://unpkg.com/comment-core-library@0.0.1/build/CommentCoreLibrary.min.js"></script>
 
-  <!-- ✅ DOMが完全に読み込まれたあとにコメント描画を開始 -->
   <script>
     window.addEventListener("load", () => {
       const commentCanvas = document.getElementById("comment-canvas");
@@ -43,11 +42,4 @@
       // 流れるコメント（水色）
       cm.send({
         mode: "scroll",
-        text: "🎉 コメント流れてるよー！ 🎉",
-        size: 40,
-        color: "#00ffff"
-      });
-    });
-  </script>
-</body>
-</html>
+        text: "🎉 コメント流れてる
