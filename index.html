@@ -2,44 +2,22 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>コメントテスト</title>
+  <title>直接文字表示テスト</title>
   <style>
     html, body {
       margin: 0;
       padding: 0;
       background: black;
-      overflow: hidden;
-    }
-    #comment-canvas {
-      width: 100vw;
+      color: white;
+      font-size: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       height: 100vh;
-      position: relative;
-      background: black;
     }
   </style>
 </head>
 <body>
-  <div id="comment-canvas"></div>
-
-  <!-- ✅ 正しいライブラリURL -->
-  <script src="https://unpkg.com/comment-core-library@0.0.1/build/CommentCoreLibrary.min.js"></script>
-
-  <script>
-    window.addEventListener("load", () => {
-      const commentCanvas = document.getElementById("comment-canvas");
-      const cm = new CommentManager(commentCanvas);
-      cm.init();
-      cm.start();
-
-      // 固定コメント（白）
-      cm.send({
-        mode: "top",
-        text: "🌟 表示されたよー！！！ 🌟",
-        size: 50,
-        color: "#ffffff"
-      });
-
-      // 流れるコメント（水色）
-      cm.send({
-        mode: "scroll",
-        text: "🎉 コメント流れてる
+  ★ これは直接表示されたテスト文字です ★
+</body>
+</html>
