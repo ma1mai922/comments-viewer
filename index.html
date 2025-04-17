@@ -2,22 +2,50 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>直接文字表示テスト</title>
+  <title>テスト表示</title>
   <style>
     html, body {
       margin: 0;
       padding: 0;
       background: black;
-      color: white;
-      font-size: 40px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      overflow: hidden;
+    }
+    #comment-canvas {
+      width: 100vw;
       height: 100vh;
+      position: relative;
+      background: black;
     }
   </style>
 </head>
 <body>
-  ★ これは直接表示されたテスト文字です ★
+  <div id="comment-canvas"></div>
+
+  <!-- ★ 動作確認済みCDN（重要） -->
+  <script src="https://unpkg.com/comment-core-library@latest/build/CommentCoreLibrary.min.js"></script>
+
+  <script>
+    const commentCanvas = document.getElementById("comment-canvas");
+    const cm = new CommentManager(commentCanvas);
+    cm.init();  // ← ★これ重要！start() の前に init()
+    cm.start();
+
+    // ★ 画面中央に固定表示
+    cm.send({
+      mode: "top",
+      text: "★ テスト成功！ ★",
+      size: 60,
+      color: "#ffffff",
+      opacity: 1
+    });
+
+    // ★ 左から右へ流すテスト
+    cm.send({
+      mode: "scroll",
+      text: "ニコニコ風コメント流し中！",
+      size: 60,
+      color: "#00ffff"
+    });
+  </script>
 </body>
 </html>
