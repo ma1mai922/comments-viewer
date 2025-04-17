@@ -1,11 +1,8 @@
-index.html
-
-
 <!DOCTYPE html>
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>テスト表示</title>
+  <title>ニコニコ風コメントテスト</title>
   <style>
     html, body {
       margin: 0;
@@ -24,30 +21,31 @@ index.html
 <body>
   <div id="comment-canvas"></div>
 
-  <!-- ★ 動作確認済みCDN（重要） -->
+  <!-- ★ 重要：正しいバージョンの CommentCoreLibrary を読み込み -->
   <script src="https://unpkg.com/comment-core-library@latest/build/CommentCoreLibrary.min.js"></script>
 
   <script>
-    const commentCanvas = document.getElementById("comment-canvas");
-    const cm = new CommentManager(commentCanvas);
-    cm.init();  // ← ★これ重要！start() の前に init()
-    cm.start();
+    document.addEventListener("DOMContentLoaded", () => {
+      const commentCanvas = document.getElementById("comment-canvas");
+      const cm = new CommentManager(commentCanvas);
+      cm.init(); // ← 描画レイヤー初期化
+      cm.start(); // ← スタート！
 
-    // ★ 画面中央に固定表示
-    cm.send({
-      mode: "top",
-      text: "★ テスト成功！ ★",
-      size: 60,
-      color: "#ffffff",
-      opacity: 1
-    });
+      // 白い固定コメント（画面上部）
+      cm.send({
+        mode: "top",
+        text: "★ 表示されました！ 🎉",
+        size: 50,
+        color: "#ffffff"
+      });
 
-    // ★ 左から右へ流すテスト
-    cm.send({
-      mode: "scroll",
-      text: "ニコニコ風コメント流し中！",
-      size: 60,
-      color: "#00ffff"
+      // 水色スクロールコメント（横に流れる）
+      cm.send({
+        mode: "scroll",
+        text: "ようこそ！コメント表示は正常に動いています 🙌",
+        size: 45,
+        color: "#00ffff"
+      });
     });
   </script>
 </body>
